@@ -1,6 +1,6 @@
 # File Upload API Documentation
 This API provides endpoints to upload XML files, validate them, convert them to JSON format, and save both the original and converted files.
-You can test the app with the files in the directory **TestFiles** (two xml files and one pdf). 
+You can test the app with the files in the **TestFiles** directory (two xml files and one pdf). 
 
 ### Getting Started
 The following settings are configured in the application configuration file (**FileUploadSettings**):
