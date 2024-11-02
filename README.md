@@ -10,12 +10,13 @@ The following settings are configured in the application configuration file (**F
 - KestrelMaxRequestBodySize: Maximum request body size, set to 50 MB for this API.
 
 ### Configuration (appsettings.json)
-*"FileUploadSettings": {
+```json
+"FileUploadSettings": {
   "TargetDirectory": "UploadedFiles",
   "JsonOutputPath": "wwwroot/json-output-files",
   "UploadEndpointPath": "/api/FileUpload/upload-multiple",
   "KestrelMaxRequestBodySize": 52428800 // 50 MB
-}*
+}
 
 ## API Endpoints
 ### Upload Multiple XML Files
@@ -25,8 +26,7 @@ Upload multiple XML files to be saved, validated, converted to JSON, and stored.
 - **URL:** /api/FileUpload/upload-multiple
 - **Method:** POST
 - **Content-Type:** multipart/form-data
-- **Parameters:**
-- - **files:** List of XML files to be uploaded (required). Each file must have a .xml extension.
+- **Parameters:** files - List of XML files to be uploaded (required). Each file must have a **.xml** extension.
 
 ### Error Handling
 The API includes robust error handling to ensure clear feedback:
