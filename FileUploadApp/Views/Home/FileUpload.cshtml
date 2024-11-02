@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Upload XML Files";
+}
+
+<h2>Upload XML Files</h2>
+
+<form id="fileUploadForm" enctype="multipart/form-data">
+    <input type="file" name="files" multiple required />
+    <button type="button" onclick="uploadFiles()">Upload Files</button>
+</form>
+
+<div id="uploadResult"></div>
+
+<script>
+    async function uploadFiles() {
+        const formData = new FormData(document.getElementById("fileUploadForm"));
+        const uploadResult = document.getElementById("uploadResult");
+        uploadResult.innerHTML = "Uploading... Please wait...";
+
+        try {
+            const response = await fetch('/api/FileUpload/upload-multiple', {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            // Clear previous results
+            uploadResult.innerHTML = "";
+
+            // Display the main message
+            if (result.message) {
+                const mainMessage = document.createElement("div");
+                mainMessage.innerText = result.message;
+                mainMessage.style.color = "green";
+                uploadResult.appendChild(mainMessage);
+            }
+
+            // Display warnings if there are any
+            if (result.warnings && Array.isArray(result.warnings)) {
+                const warningsHeading = document.createElement("h3");
+                warningsHeading.innerText = "Warnings:";
+                uploadResult.appendChild(warningsHeading);
+
+                result.warnings.forEach(warning => {
+                    const warningMessage = document.createElement("div");
+                    warningMessage.innerText = warning;
+                    warningMessage.style.color = "orange";
+                    uploadResult.appendChild(warningMessage);
+                });
+            }
+
+        } catch (error) {
+            uploadResult.innerHTML = `<span style="color: red;">An unexpected error occurred: ${error.message}</span>`;
+        }
+    }
+</script>
+
