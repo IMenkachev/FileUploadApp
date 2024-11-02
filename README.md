@@ -17,7 +17,7 @@ The following settings are configured in the application configuration file (**F
   "UploadEndpointPath": "/api/FileUpload/upload-multiple",
   "KestrelMaxRequestBodySize": 52428800 // 50 MB
 }
-
+```json
 ## API Endpoints
 ### Upload Multiple XML Files
 Upload multiple XML files to be saved, validated, converted to JSON, and stored.
