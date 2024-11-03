@@ -5,8 +5,8 @@ You can test the app with the files in the **TestFiles** directory (two xml file
 ### Getting Started
 The following settings are configured in the application configuration file (**FileUploadSettings**):
 
-- TargetDirectory: Directory path for saving uploaded files.
-- JsonOutputPath: Directory path for storing JSON-converted files.
+- TargetDirectory: Directory path for saving uploaded files (self-generated with the first request).
+- JsonOutputPath: Directory path for storing JSON-converted files (self-generated with the first request).
 - UploadEndpointPath: Path for the upload endpoint.
 - KestrelMaxRequestBodySize: Maximum request body size, set to 50 MB for this API.
 
